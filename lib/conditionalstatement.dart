@@ -1,8 +1,8 @@
 void main() {
-  int number = 91;
+  int number = 84;
   if (number % 2 == 0) {
     print("Even Number");
-  } else {
+  } else if (number % 3 == 0) {
     print("Odd Number");
   }
   print("End of Program");
