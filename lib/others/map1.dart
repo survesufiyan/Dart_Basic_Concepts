@@ -42,8 +42,8 @@ void main() {
           user['experienceLevel'] == 'Advanced'));
 
   // Print filtered users
-  filteredUsers.forEach((user) {
+  for (var user in filteredUsers) {
     print("👤 ${user['name']} (Age: ${user['age']})");
     print("   🔹 Experience Level: ${user['experienceLevel']}\n");
-  });
+  }
 }

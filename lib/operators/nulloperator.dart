@@ -13,16 +13,16 @@ void main() {
   var n = Num();
   int number;
 
-  number = n!.num;
+  number = n.num;
   print(number);
 
-  number = n!.num2;
+  number = n.num2;
   print(number);
 
-  number = n?.num2 ?? 0;
+  number = n.num2 ?? 0;
   print(number);
 
-  number = n?.num3 ?? 0;
+  number = n.num3 ?? 0;
   print(number);
 
   number = n.num3;

@@ -71,12 +71,12 @@ void main() {
 
   var sortedUsers = users.values.toList()
     ..sort((a, b) => b['age'].compareTo(a['age']));
-  sortedUsers.forEach((user) {
+  for (var user in sortedUsers) {
     print("👤 ${user['name']} (Age: ${user['age']})");
-  });
+  }
 
   var filteredUsers = users.values.where((user) => user['age'] > 25);
-  filteredUsers.forEach((user) {
+  for (var user in filteredUsers) {
     print("👤 ${user['name']} (Age: ${user['age']})");
-  });
+  }
 }
