@@ -1,5 +1,5 @@
 void main(){
-cons Greeting = greet(10, "Prosmart");
+final Greeting = greet(10, "Prosmart");
 print(Greeting);
 }
 greet(name, age) {
