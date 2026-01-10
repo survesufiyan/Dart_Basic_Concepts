@@ -5,8 +5,8 @@ main() {
   const aConstNum = 0;
   const aConstBool = true;
   const aConstString = 'a constant string';
-  const aConstList = const ['a', 'b', 'c'];
-  int? num = null;
+  const aConstList = ['a', 'b', 'c'];
+  int? num;
 
   print(aConstNum);
   print(aConstBool);

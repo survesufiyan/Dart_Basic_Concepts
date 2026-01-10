@@ -7,19 +7,13 @@ void main() {
   var b = true;
   var c = 10.5;
 
-  if (a is int) {
-    print('integer');
-  }
+  print('integer');
 
-  if (s is String) {
-    print('String');
-  }
+  print('String');
 
   if (b is Bool) {
     print('boolean');
   }
 
-  if (c is double) {
-    print('double');
-  }
+  print('double');
 }
