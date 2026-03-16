@@ -26,13 +26,15 @@ for defining constants or values that should not be modified after their initial
    This example demonstrates how to define and call functions in Dart, including passing parameters
    and returning values. It also shows how to use named parameters in functions.
 */
-void main(){
-final Greeting = greet(10, "Prosmart");
-print(Greeting);
+void main() {
+// ignore: non_constant_identifier_names
+  final Greeting = greet(10, "Prosmart");
+  print(Greeting);
 
-final mobileNumber = mobile(moobileNumber: 12220523624, name: "Sufiyan");
-print(mobileNumber);
+  final mobileNumber = mobile(moobileNumber: 12220523624, name: "Sufiyan");
+  print(mobileNumber);
 }
+
 /* 
 what dose the return keyword do?
 The `return` keyword in Dart is used to exit a function and optionally return a value to
@@ -62,12 +64,9 @@ This is useful for cases where you want to allow the absence of a value or when 
 
 */
 mobile({required int moobileNumber, String? name}) {
-  return("Mobile number is $mobileNumber and name is $name");
-
+  return ("Mobile number is $moobileNumber and name is $name");
 }
 
 greet(name, age) {
-  return("Hello $name, you are $age years old.");
-   
+  return ("Hello $name, you are $age years old.");
 }
-
