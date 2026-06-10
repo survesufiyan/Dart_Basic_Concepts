@@ -1,0 +1,995 @@
+================================================================================
+                    GIT & GITHUB: ZERO TO HERO GUIDE
+================================================================================
+
+TABLE OF CONTENTS:
+1. What is Git?
+2. What is GitHub?
+3. Installation & Setup
+4. Git Basics (Beginner Level)
+5. Intermediate Git Concepts
+6. Advanced Git Concepts
+7. GitHub Features & Workflows
+8. Best Practices
+9. Real-World Scenarios
+
+================================================================================
+1. WHAT IS GIT?
+================================================================================
+
+Git is a DISTRIBUTED VERSION CONTROL SYSTEM (VCS).
+
+KEY CONCEPTS:
+- Version Control: Tracks changes to files over time
+- Distributed: Every developer has a complete copy of the project history
+- Allows multiple people to work on the same project simultaneously
+- Created by Linus Torvalds in 2005
+
+WHY USE GIT?
+✓ Track all changes to code
+✓ Collaborate with team members
+✓ Revert to previous versions
+✓ Create branches for new features
+✓ Merge changes from multiple developers
+✓ Maintain code history
+
+================================================================================
+2. WHAT IS GITHUB?
+================================================================================
+
+GitHub is a CLOUD-BASED HOSTING SERVICE for Git repositories.
+
+KEY POINTS:
+- GitHub hosts your Git repositories on the cloud
+- Provides web interface for managing projects
+- Enables collaboration features (Pull Requests, Issues, Discussions)
+- Free and paid plans available
+- Largest code hosting platform (owned by Microsoft since 2018)
+
+GITHUB VS GIT:
+- Git: The tool (software) for version control
+- GitHub: The platform to host and collaborate on repositories
+
+OTHER SIMILAR PLATFORMS:
+- GitLab
+- Bitbucket
+- Gitea
+
+================================================================================
+3. INSTALLATION & SETUP
+================================================================================
+
+STEP 1: INSTALL GIT
+Windows:
+  → Download from: https://git-scm.com/download/win
+  → Run installer, accept defaults
+  → Verify: Open CMD and type: git --version
+
+Mac:
+  → Command: brew install git
+  → Verify: git --version
+
+Linux:
+  → Ubuntu/Debian: sudo apt-get install git
+  → Fedora: sudo dnf install git
+  → Verify: git --version
+
+STEP 2: CONFIGURE GIT (First time only)
+Set your name:
+  git config --global user.name "Your Name"
+
+Set your email:
+  git config --global user.email "your.email@example.com"
+
+View configuration:
+  git config --global --list
+
+Optional - Set default editor:
+  git config --global core.editor "code"  (VS Code)
+
+================================================================================
+4. GIT BASICS - BEGINNER LEVEL
+================================================================================
+
+CONCEPT 1: THE THREE STATES OF GIT FILES
+────────────────────────────────────────
+
+1. WORKING DIRECTORY
+   - Your local files on computer
+   - Untracked or modified files live here
+   
+2. STAGING AREA (Index)
+   - Files you've marked for commit
+   - Created with: git add
+   
+3. REPOSITORY (.git folder)
+   - Committed changes stored here
+   - Created with: git commit
+
+FLOW: Working Directory → Staging Area → Repository
+
+CONCEPT 2: BASIC WORKFLOW
+────────────────────────
+
+Scenario: You create a new project and want to track it with Git
+
+STEP 1: Initialize a repository
+  git init
+  → Creates .git folder in your project
+  → This folder stores all history
+
+STEP 2: Check status
+  git status
+  → Shows which files are untracked/modified
+  → Shows what's staged for commit
+
+STEP 3: Add files to staging area
+  git add filename.txt
+  or add all files:
+  git add .
+
+STEP 4: Commit changes
+  git commit -m "Initial commit - created project structure"
+  → Saves a snapshot of your code
+  → -m flag adds a commit message
+
+STEP 5: View commit history
+  git log
+  → Shows all commits with timestamps and messages
+
+================================================================================
+EXAMPLE: YOUR FIRST GIT PROJECT
+════════════════════════════════
+
+Step-by-step walkthrough:
+
+1. Create a project folder:
+   mkdir my_project
+   cd my_project
+
+2. Initialize Git:
+   git init
+
+3. Create a file:
+   echo "print('Hello World')" > hello.py
+
+4. Check status:
+   git status
+   Output: hello.py is untracked
+
+5. Add to staging:
+   git add hello.py
+
+6. Commit:
+   git commit -m "Add hello world program"
+
+7. View history:
+   git log
+
+Congratulations! You've made your first commit!
+
+================================================================================
+BASIC COMMANDS REFERENCE
+════════════════════════
+
+git init
+  → Initialize a new repository
+
+git status
+  → Show status of files (modified, staged, untracked)
+
+git add <filename>
+  → Stage a specific file
+
+git add .
+  → Stage all files
+
+git commit -m "message"
+  → Commit staged changes with a message
+
+git log
+  → View commit history
+
+git log --oneline
+  → View commits in compact format
+
+git log -p
+  → View commits with detailed changes (diffs)
+
+git diff
+  → Show differences in unstaged files
+
+git diff --staged
+  → Show differences in staged files
+
+git show <commit-hash>
+  → Show details of a specific commit
+
+================================================================================
+5. INTERMEDIATE GIT CONCEPTS
+================================================================================
+
+CONCEPT 1: BRANCHES
+───────────────────
+
+What are branches?
+- Separate lines of development
+- Allow parallel work without affecting main code
+- Main branch: "master" or "main" (default)
+- Create branches for features/bugfixes
+
+Why use branches?
+✓ Work on features independently
+✓ Keep main code stable
+✓ Easy collaboration
+✓ Code review through branch merging
+
+Common branching strategy (Git Flow):
+- main: Production-ready code
+- develop: Integration branch
+- feature/feature-name: New features
+- bugfix/bug-name: Bug fixes
+- hotfix/hotfix-name: Critical fixes
+
+BRANCH COMMANDS:
+
+View all branches:
+  git branch
+
+View remote branches:
+  git branch -r
+
+Create a new branch:
+  git branch feature/login-page
+
+Switch to a branch:
+  git checkout feature/login-page
+
+Create and switch in one command:
+  git checkout -b feature/login-page
+
+Delete a branch:
+  git branch -d feature/login-page
+
+Rename current branch:
+  git branch -m new-branch-name
+
+================================================================================
+CONCEPT 2: MERGING
+──────────────────
+
+Merging combines changes from one branch into another.
+
+SCENARIO: You completed work on feature/login-page and want to merge into main
+
+Steps:
+
+1. Switch to main branch:
+   git checkout main
+
+2. Merge feature branch:
+   git merge feature/login-page
+
+3. If there are no conflicts, merge completes automatically
+4. If conflicts exist, you must resolve them manually
+
+MERGE CONFLICTS:
+
+What happens?
+- When same file is edited in different branches
+- Git can't automatically decide which change to keep
+
+How to resolve:
+1. Git marks conflicted sections in the file
+2. You manually edit the file
+3. Choose which changes to keep
+4. Stage and commit the resolved file
+
+Example conflicted file:
+  <<<<<<< HEAD
+  print("Version from main branch")
+  =======
+  print("Version from feature branch")
+  >>>>>>> feature/login-page
+
+Resolution:
+  Choose one version, remove conflict markers, save
+
+================================================================================
+CONCEPT 3: REMOTE REPOSITORIES
+───────────────────────────────
+
+Remote: A copy of your repository on a server (like GitHub)
+
+Why remotes?
+✓ Backup your code on cloud
+✓ Collaborate with team
+✓ Deploy to servers
+
+REMOTE COMMANDS:
+
+View remotes:
+  git remote
+  git remote -v  (verbose - shows URLs)
+
+Add a remote:
+  git remote add origin https://github.com/username/repo.git
+  (origin is the default name for main remote)
+
+Push changes to remote:
+  git push origin main
+  (Uploads your commits to GitHub)
+
+Pull changes from remote:
+  git pull origin main
+  (Downloads changes from GitHub)
+
+Fetch changes (without merging):
+  git fetch origin
+
+WORKFLOW WITH REMOTE:
+
+1. Clone repository:
+   git clone https://github.com/username/repo.git
+
+2. Create a branch:
+   git checkout -b feature/new-feature
+
+3. Make changes and commit:
+   git commit -m "Added new feature"
+
+4. Push to remote:
+   git push origin feature/new-feature
+
+5. Create Pull Request on GitHub (merge into main)
+
+================================================================================
+CONCEPT 4: UNDOING CHANGES
+──────────────────────────
+
+Scenario 1: You modified a file but want to discard changes
+  git checkout -- filename.txt
+  or (newer syntax):
+  git restore filename.txt
+
+Scenario 2: You staged a file but want to unstage it
+  git reset HEAD filename.txt
+  or:
+  git restore --staged filename.txt
+
+Scenario 3: You committed something wrong - fix last commit
+  git commit --amend -m "Corrected message"
+  (Modifies the last commit)
+
+Scenario 4: You want to undo a commit but keep the changes
+  git reset --soft HEAD~1
+  (HEAD~1 means "one commit back")
+
+Scenario 5: You want to undo a commit and discard changes
+  git reset --hard HEAD~1
+  ⚠️  DANGEROUS - irreversible!
+
+Scenario 6: You want to undo a commit that's already pushed
+  git revert <commit-hash>
+  (Creates a new commit that undoes the changes)
+
+================================================================================
+6. ADVANCED GIT CONCEPTS
+================================================================================
+
+CONCEPT 1: REBASING
+───────────────────
+
+What is rebasing?
+- Re-applies commits on top of another branch
+- Alternative to merging
+- Creates linear history
+
+When to use:
+- Personal branches (not shared)
+- To maintain clean history
+- Before creating Pull Request
+
+Example:
+  git rebase main
+  (Applies your branch commits on top of latest main)
+
+Interactive rebase (advanced):
+  git rebase -i HEAD~3
+  (Modify, squash, or reorder last 3 commits)
+
+================================================================================
+CONCEPT 2: STASHING
+───────────────────
+
+What is stashing?
+- Temporarily save uncommitted changes
+- Clean working directory
+- Apply stash later
+
+Use case:
+You're working on feature A, but need to switch to main to fix a bug
+
+Stash changes:
+  git stash
+  git stash save "WIP: feature A progress"
+
+List stashes:
+  git stash list
+
+Apply stash:
+  git stash apply
+  git stash apply stash@{0}  (apply specific stash)
+
+Pop stash (apply and remove):
+  git stash pop
+
+Delete stash:
+  git stash drop
+  git stash drop stash@{0}  (delete specific stash)
+
+================================================================================
+CONCEPT 3: CHERRY-PICKING
+──────────────────────────
+
+What is cherry-picking?
+- Apply a specific commit from one branch to another
+- Without merging the entire branch
+
+Example:
+You have a bugfix commit on bugfix branch that you want on main
+
+Cherry-pick the commit:
+  git cherry-pick <commit-hash>
+  (Apply that specific commit to current branch)
+
+Multiple commits:
+  git cherry-pick <commit1> <commit2> <commit3>
+
+================================================================================
+CONCEPT 4: TAGS
+───────────────
+
+What are tags?
+- Label specific points in history
+- Usually used for releases
+- Example: v1.0, v2.5
+
+Create a tag:
+  git tag v1.0
+
+View tags:
+  git tag
+  git tag -l  (list with pattern: git tag -l "v1.*")
+
+Create annotated tag (with message):
+  git tag -a v1.0 -m "Release version 1.0"
+
+View tag details:
+  git show v1.0
+
+Push tags to remote:
+  git push origin v1.0
+  git push origin --tags  (push all tags)
+
+================================================================================
+CONCEPT 5: REFLOG (Reference Log)
+──────────────────────────────────
+
+What is reflog?
+- Log of all reference updates (HEAD movements)
+- Useful for recovering lost commits
+
+View reflog:
+  git reflog
+
+Example use case:
+You accidentally reset to a previous commit. Reflog shows it!
+  git reset --hard <commit-from-reflog>
+
+================================================================================
+7. GITHUB FEATURES & WORKFLOWS
+================================================================================
+
+GITHUB FEATURE 1: PULL REQUESTS (PR)
+────────────────────────────────────
+
+What is a Pull Request?
+- Request to merge your branch into another branch
+- Platform for code review
+- Discussion and feedback
+
+Pull Request Workflow:
+
+1. Create a feature branch:
+   git checkout -b feature/add-login
+
+2. Make commits:
+   git commit -m "Add login form"
+   git commit -m "Add validation"
+
+3. Push to GitHub:
+   git push origin feature/add-login
+
+4. Create Pull Request on GitHub website:
+   - Go to repository
+   - Click "Pull requests" tab
+   - Click "New pull request"
+   - Select branches (feature/add-login → main)
+   - Add title and description
+   - Click "Create pull request"
+
+5. Code review:
+   - Team members review code
+   - Request changes or approve
+   - Discussion happens in PR
+
+6. Merge:
+   - Once approved, merge to main
+   - GitHub automatically closes PR
+   - Delete feature branch
+
+PR Best Practices:
+✓ Keep PRs small and focused
+✓ Write clear descriptions
+✓ Link to related issues
+✓ Request specific reviewers
+✓ Address all comments before merging
+
+================================================================================
+GITHUB FEATURE 2: ISSUES
+────────────────────────
+
+What are Issues?
+- Track bugs, feature requests, documentation
+- Discussion threads for features/problems
+
+Creating an Issue:
+
+1. Click "Issues" tab in GitHub repo
+2. Click "New issue"
+3. Add title and description
+4. Assign to person
+5. Add labels (bug, feature, help wanted)
+6. Click "Submit new issue"
+
+Linking PR to Issue:
+
+In PR description, write:
+  Closes #123
+  (where 123 is the issue number)
+
+When PR is merged, issue automatically closes
+
+================================================================================
+GITHUB FEATURE 3: COLLABORATION
+────────────────────────────────
+
+Push Access Models:
+
+1. Direct Push:
+   - You have write access
+   - Push directly to repository
+   - Simple, but needs trust
+
+2. Fork & Pull Request (most common for open source):
+   - Fork repository (copy to your account)
+   - Clone your fork locally
+   - Make changes and push to your fork
+   - Create PR from your fork to original repo
+
+How to Fork:
+
+1. Visit original repo on GitHub
+2. Click "Fork" button (top right)
+3. Select where to fork
+4. Now you have a copy in your account
+
+Working with Fork:
+
+git clone https://github.com/YOUR-USERNAME/forked-repo.git
+cd forked-repo
+git remote add upstream https://github.com/ORIGINAL-OWNER/repo.git
+
+Keep fork updated with upstream:
+  git fetch upstream
+  git rebase upstream/main
+
+================================================================================
+GITHUB FEATURE 4: ACTIONS (CI/CD)
+──────────────────────────────────
+
+What are GitHub Actions?
+- Automated workflows triggered by events
+- Run tests, deploy code, check code quality
+- No external tools needed
+
+Common Uses:
+✓ Run tests on every push/PR
+✓ Build and deploy applications
+✓ Check code style
+✓ Generate documentation
+
+Simple Example (.github/workflows/test.yml):
+
+name: Run Tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm test
+
+When push/PR created → GitHub automatically runs tests
+
+================================================================================
+8. BEST PRACTICES
+================================================================================
+
+COMMIT MESSAGES:
+✓ Clear and descriptive
+✗ "fix" or "update"
+✓ "Fix null pointer exception in user authentication"
+
+✓ Use present tense: "Add feature" not "Added feature"
+✓ Keep subject under 50 characters
+✓ Add detailed description in body if needed
+
+Example good commit:
+  Add user authentication module
+  
+  Implement login and signup functionality with:
+  - Email validation
+  - Password hashing with bcrypt
+  - JWT token generation
+
+────────────────────────────────
+
+BRANCHING:
+✓ Use descriptive branch names
+  feature/user-authentication
+  bugfix/navbar-alignment
+  hotfix/critical-security-issue
+
+✓ Delete merged branches
+  git branch -d feature/completed-feature
+
+✓ Keep branches short-lived (few days)
+
+────────────────────────────────
+
+WORKFLOW:
+✓ Create branch for every feature/fix
+✓ Make small, focused commits
+✓ Push frequently
+✓ Create PR before merging to main
+✓ Get code review from teammates
+
+────────────────────────────────
+
+CODE REVIEW:
+✓ Review before merging
+✓ Request changes if needed
+✓ Provide constructive feedback
+✓ Approve when satisfied
+
+────────────────────────────────
+
+.gitignore FILE:
+- Specifies files Git should ignore
+- Common: node_modules/, .env, __pycache__
+
+Example .gitignore:
+  node_modules/
+  .env
+  .DS_Store
+  *.log
+  build/
+
+────────────────────────────────
+
+REPOSITORY SETUP:
+✓ Add README.md
+✓ Add LICENSE
+✓ Add .gitignore
+✓ Add CONTRIBUTING.md (for open source)
+✓ Write clear documentation
+
+================================================================================
+9. REAL-WORLD SCENARIOS
+================================================================================
+
+SCENARIO 1: JOIN AN EXISTING PROJECT
+─────────────────────────────────────
+
+1. Clone repository:
+   git clone https://github.com/team/project.git
+   cd project
+
+2. Check branches:
+   git branch -r
+
+3. Checkout develop branch:
+   git checkout develop
+
+4. Create feature branch:
+   git checkout -b feature/new-feature
+
+5. Make changes:
+   [edit files]
+   git status
+
+6. Stage changes:
+   git add .
+
+7. Commit:
+   git commit -m "Implement new feature"
+
+8. Push:
+   git push origin feature/new-feature
+
+9. Create PR on GitHub:
+   [Go to repo, click Pull Request, describe changes]
+
+10. Wait for review and merge
+
+================================================================================
+SCENARIO 2: EMERGENCY HOTFIX TO PRODUCTION
+───────────────────────────────────────────
+
+Situation: Critical bug in production!
+
+1. Create hotfix branch from main:
+   git checkout main
+   git pull origin main
+   git checkout -b hotfix/critical-bug
+
+2. Fix the bug:
+   [edit file]
+   git commit -m "Fix critical authentication bug"
+
+3. Push and create PR:
+   git push origin hotfix/critical-bug
+   [Create PR, get quick approval]
+
+4. Merge to main:
+   git merge hotfix/critical-bug
+   git push origin main
+
+5. Deploy to production
+
+6. Also merge to develop:
+   git checkout develop
+   git merge hotfix/critical-bug
+
+================================================================================
+SCENARIO 3: UNDO PUSHED COMMIT
+──────────────────────────────
+
+You pushed commit with mistake!
+
+Option 1 - If not merged to main (safe):
+   git revert <commit-hash>
+   git push origin branch-name
+
+Option 2 - If only you have pushed (careful):
+   git reset --soft HEAD~1
+   [Fix the mistake]
+   git commit -m "Fixed version"
+   git push -f origin branch-name
+   ⚠️  Only use -f if no one else is using this branch!
+
+Option 3 - If already in main (must revert):
+   git revert <commit-hash>
+   git push origin main
+   (Creates new commit that undoes changes)
+
+================================================================================
+SCENARIO 4: SYNC WITH UPSTREAM (for forked repos)
+──────────────────────────────────────────────────
+
+Original repo has new updates, you want to sync:
+
+1. Add upstream remote:
+   git remote add upstream https://github.com/ORIGINAL/repo.git
+
+2. Fetch upstream:
+   git fetch upstream
+
+3. Checkout your main:
+   git checkout main
+
+4. Rebase on upstream:
+   git rebase upstream/main
+
+5. Push to your fork:
+   git push origin main
+
+================================================================================
+SCENARIO 5: SQUASH COMMITS BEFORE PR
+─────────────────────────────────────
+
+You have 5 commits on feature branch but want to combine them:
+
+Interactive rebase:
+   git rebase -i HEAD~5
+
+In the editor:
+   pick commit1
+   squash commit2
+   squash commit3
+   squash commit4
+   squash commit5
+
+Save and write combined commit message
+
+Force push:
+   git push -f origin feature-branch
+
+Now PR shows single clean commit
+
+================================================================================
+USEFUL ALIASES (Shortcuts)
+════════════════════════════
+
+Add to git config:
+  git config --global alias.co checkout
+  git config --global alias.br branch
+  git config --global alias.ci commit
+  git config --global alias.st status
+  git config --global alias.unstage 'reset HEAD --'
+  git config --global alias.last 'log -1 HEAD'
+  git config --global alias.visual 'log --graph --oneline --all'
+
+Then use:
+  git co feature/branch  (instead of git checkout)
+  git st  (instead of git status)
+  git visual  (see branch graph)
+
+================================================================================
+COMMON MISTAKES & HOW TO FIX THEM
+═════════════════════════════════
+
+Mistake 1: Committed to main instead of feature branch
+  Solution: Create new branch and cherry-pick commits
+  git branch feature/new-feature
+  git reset --hard HEAD~2  (go back 2 commits on main)
+
+Mistake 2: Forgot to add important file in commit
+  Solution: git commit --amend
+  git add forgotten-file.txt
+  git commit --amend
+
+Mistake 3: Merged wrong branches
+  Solution: git revert or reset if not pushed
+  git reset --hard ORIG_HEAD  (if just happened)
+
+Mistake 4: Lost commits (git reset went wrong)
+  Solution: Use reflog!
+  git reflog  (find the commit hash)
+  git reset --hard <found-hash>
+
+Mistake 5: Forgot what branch you're on
+  Solution: Always check!
+  git branch  (current branch has *)
+  git status  (shows current branch)
+
+================================================================================
+ADVANCED WORKFLOWS
+════════════════════
+
+GITFLOW WORKFLOW:
+- main: Production releases
+- develop: Integration branch
+- feature/: New features from develop
+- release/: Release preparation
+- hotfix/: Critical fixes from main
+
+TRUNK-BASED DEVELOPMENT:
+- Single main branch
+- Everyone pushes to main frequently (multiple times/day)
+- Heavy reliance on feature flags
+- Good for continuous deployment
+
+GITHUB FLOW (Simple):
+- main branch is always deployable
+- Create descriptive branch for feature
+- Commit frequently, push to GitHub
+- Open PR for discussion
+- Merge only when satisfied
+- Deploy from main
+
+================================================================================
+GLOSSARY
+═════════
+
+Repository: Project folder with .git directory
+Commit: Snapshot of code at a point in time
+Branch: Separate line of development
+Merge: Combine changes from one branch to another
+Remote: Repository copy on server (GitHub)
+Clone: Copy repository to local machine
+Push: Upload local commits to remote
+Pull: Download remote commits to local
+Fetch: Get updates from remote without merging
+Fork: Personal copy of someone else's repository
+Pull Request: Request to merge branch into another
+HEAD: Pointer to current commit
+Origin: Default name for main remote
+Upstream: Original repository (for forks)
+Stash: Temporarily save uncommitted changes
+Rebase: Re-apply commits on top of another branch
+Tag: Label for specific commit (usually releases)
+Conflict: When Git can't automatically merge changes
+Index/Staging Area: Files marked for commit
+
+================================================================================
+RESOURCES FOR LEARNING
+═════════════════════
+
+Official Documentation:
+- Git: https://git-scm.com/doc
+- GitHub: https://docs.github.com
+
+Interactive Learning:
+- GitHub Learning Lab: https://lab.github.com
+- Learn Git Branching: https://learngitbranching.js.org
+- Try Git: https://try.github.io
+
+Books:
+- Pro Git (free): https://git-scm.com/book
+- GitHub for Dummies
+
+Practice:
+- Create personal projects
+- Contribute to open source
+- Practice merge conflicts locally
+
+================================================================================
+YOUR LEARNING PATH
+═══════════════════
+
+WEEK 1-2 (BASICS):
+□ Install Git
+□ Create test repository
+□ Practice: init, add, commit, status, log
+□ Create branches and switch between them
+□ Practice undoing changes
+
+WEEK 3-4 (INTERMEDIATE):
+□ Practice merging branches
+□ Resolve merge conflicts
+□ Push to GitHub
+□ Learn about Pull Requests
+□ Create and manage remotes
+
+WEEK 5-6 (ADVANCED):
+□ Practice rebasing
+□ Learn stashing
+□ Cherry-picking
+□ Contribute to open source project
+□ Study GitHub workflows
+
+ONGOING:
+□ Practice daily
+□ Review others' code
+□ Contribute to projects
+□ Stay updated with Git tips
+
+================================================================================
+                              END OF GUIDE
+================================================================================
+
+KEY TAKEAWAYS:
+✓ Git is version control, GitHub is hosting
+✓ Always create branches for new work
+✓ Commit small, focused changes
+✓ Write clear commit messages
+✓ Use Pull Requests for code review
+✓ Keep learning through practice
+✓ Don't fear mistakes - they're learning opportunities!
+
+GO BUILD AWESOME PROJECTS! 🚀
+
+================================================================================
