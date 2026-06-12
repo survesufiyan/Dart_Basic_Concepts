@@ -137,7 +137,7 @@ STEP 5: View commit history
   git log
   → Shows all commits with timestamps and messages
 
-=============================================================================
+====================================================================
 EXAMPLE: YOUR FIRST GIT PROJECT
 ════════════════════════════════
 
