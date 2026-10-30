@@ -9,4 +9,8 @@ void main() {
   print('City: $city');
 
   city = 'Los Angeles';
+  print('Updated City: $city');
+
+  city = 'Chicago';
+  print('Updated City: $city');
 }
