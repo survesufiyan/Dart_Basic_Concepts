@@ -79,3 +79,29 @@ Immutable variables cannot be changed after they are assigned, reducing the risk
 2. Readability: Using `final` and `const` makes it clear to other developers that the variable is intended to be immutable, improving code readability and maintainability.
 3. Performance: `const` variables are evaluated at compile time, which can lead to performance  optimizations. 
 Since their values are known at compile time, the Dart compiler can optimize the code more effectively.  
+
+what is meaning of .toUpperCase() in Dart?
+In Dart, the `.toUpperCase()` method is used to convert all the characters in a string to uppercase letters. 
+For example, if you have a string like "hello", calling `toUpperCase()` on it will return "HELLO". 
+This method does not modify the original string; instead, it returns a new string with all uppercase characters.
+
+what is meaning of .length in Dart?
+The `.length` property in Dart returns the number of characters in a string.
+
+How many types of properties are there in Dart?
+In Dart, properties can be categorized into several types, including:
+1. **Instance Properties**: These are properties that belong to an instance of a class. They can be accessed using the instance of the class.
+2. **Static Properties**: These are properties that belong to the class itself rather than any instance. They can be accessed using the class name.
+Example:
+```dart
+class MyClass {
+  static int staticProperty = 42; // Static property
+  int instanceProperty; // Instance property
+
+  MyClass(this.instanceProperty);
+}
+Disavantages of using properties in Dart:
+1. **Encapsulation Issues**: If properties are not properly encapsulated, it can lead to unintended access and modification of data, 
+which can compromise the integrity of the object.
+2. **Performance Overhead**: Accessing properties, especially if they involve getters and setters, 
+can introduce performance overhead compared to direct field access.  
