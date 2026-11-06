@@ -55,7 +55,10 @@ Dart will throw an error indicating that the variable is undefined.
 error: Undefined name 'city'.
 Try correcting the name to one that is defined, or defining the name.
 
-what is the final keyword in dart?
+what is const and final called in dart
+In Dart const and final are called immutability modifiers or control keywords that define how a variable's value is initialized and stored. They are used to create variables whose values cannot be changed once set.
+
+what is the final keyword used in dart?
 In Dart, the `final` keyword is used to declare a variable that can only be assigned once. 
 Once a `final` variable has been assigned a value, it cannot be changed or reassigned. 
 This is useful for creating read-only variables that should not be modified after their initial assignment.
@@ -67,7 +70,7 @@ print('Enter your city:');
 city = stdin.readLineSync(); // Assigning a value to the final variable
 print('City: $city'); // This will print the assigned value of the final variable
 
-what is the const keyword in dart?
+what is the meaning of const keyword in dart?
 In Dart, the `const` keyword is used to declare a compile-time constant. 
 A `const` variable must be assigned a value at the time of declaration, and that value must be known at compile time. 
 Unlike `final`, which allows for runtime assignment, `const` ensures that the value is immutable and cannot be changed throughout the program.
@@ -79,6 +82,11 @@ Immutable variables cannot be changed after they are assigned, reducing the risk
 2. Readability: Using `final` and `const` makes it clear to other developers that the variable is intended to be immutable, improving code readability and maintainability.
 3. Performance: `const` variables are evaluated at compile time, which can lead to performance  optimizations. 
 Since their values are known at compile time, the Dart compiler can optimize the code more effectively.  
+
+Example of final and const and var
+the error in the code is that the variable averageMarks is declared as a constant (const) but it is being assigned a value that is calculated at runtime (totalMarks / 4.0). 
+In Dart, const variables must be assigned a compile-time constant value. 
+To fix this error, you can change the declaration of averageMarks to a regular variable (using var or final) instead of const.
 
 what is meaning of .toUpperCase() in Dart?
 In Dart, the `.toUpperCase()` method is used to convert all the characters in a string to uppercase letters. 
